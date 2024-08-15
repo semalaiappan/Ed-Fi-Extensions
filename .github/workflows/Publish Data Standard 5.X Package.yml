@@ -99,6 +99,21 @@ jobs:
       env:
         GITHUB_TOKEN: ${{secrets.PLANETSCALE_TOKEN}}
 
+
+    - uses: stefanzweifel/git-auto-commit-action@v5
+      id: auto-commit-action #mandatory for the output to show up in ${{ steps }}
+      with:
+        commit_message: "${{steps.set-version.outputs.version}}"
+        push_options: '--force'
+        
+    - name: "Run if changes have been detected"
+      if: steps.auto-commit-action.outputs.changes_detected == 'true'
+      run: echo "Changes!"
+
+    - name: "Run if no changes have been detected"
+      if: steps.auto-commit-action.outputs.changes_detected == 'false'
+      run: echo "No Changes!"
+
     - name: Create packages
       working-directory: ./Ed-Fi-Extensions/package/
       # Explicit step is not required for publishing, but it allows us to upload artifacts
