@@ -42,12 +42,16 @@ jobs:
     - name: Checkout Ed-Fi-Extensions
       uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
       with:
-          repository: Ed-Fi-Alliance-OSS/Ed-Fi-Extensions
+          repository: semalaiappan/Ed-Fi-Extensions
           path: Ed-Fi-Extensions/
           fetch-depth: 0
           ref: 'ODS-6341'
 
-
+    - name: Is pull request branch exists in Ed-Fi-Extensions
+      shell: pwsh
+      working-directory: ./Ed-Fi-Extensions/
+      run: |
+        .\build.githubactions.ps1 CheckoutBranch -RelativeRepoPath "."
 
     - name: Current Latest Tag Version
       working-directory: ./Ed-Fi-Extensions/    
