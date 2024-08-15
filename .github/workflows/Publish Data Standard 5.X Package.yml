@@ -25,7 +25,7 @@ env:
 jobs:
   Publish-Data-Standard-5X:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     defaults:
       run:
         working-directory: Ed-Fi-Extensions
@@ -47,7 +47,7 @@ jobs:
           fetch-depth: 0
 
     - name: Is pull request branch exists in Ed-Fi-Extensions
-      shell: pwsh
+      shell: powershell
       working-directory: ./Ed-Fi-Extensions/
       run: |
         .\build.githubactions.ps1 CheckoutBranch -RelativeRepoPath "."
