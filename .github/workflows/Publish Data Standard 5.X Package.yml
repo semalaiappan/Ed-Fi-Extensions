@@ -45,7 +45,6 @@ jobs:
           repository: semalaiappan/Ed-Fi-Extensions
           path: Ed-Fi-Extensions/
           fetch-depth: 0
-          ref: 'ODS-6341'
 
     - name: Is pull request branch exists in Ed-Fi-Extensions
       shell: pwsh
