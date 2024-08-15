@@ -50,7 +50,7 @@ jobs:
       shell: pwsh
       working-directory: ./Ed-Fi-Extensions/
       run: |
-        ./eng/build.githubactions.ps1 CheckoutBranch -RelativeRepoPath "."
+        .\build.githubactions.ps1 CheckoutBranch -RelativeRepoPath "."
 
     - name: Current Latest Tag Version
       working-directory: ./Ed-Fi-Extensions/    
