@@ -7,8 +7,8 @@ on:
 
   workflow_dispatch:
 
-permissions: read-all
-
+permissions:
+      contents: write
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
@@ -105,7 +105,7 @@ jobs:
       with:
         commit_message: "${{steps.set-version.outputs.version}}"
         push_options: '--force'
-        
+
     - name: "Run if changes have been detected"
       if: steps.auto-commit-action.outputs.changes_detected == 'true'
       run: echo "Changes!"
